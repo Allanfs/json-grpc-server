@@ -47,7 +47,7 @@ const transformKeys = obj => {
   }
   const newObj = {};
   for (const k in obj) {
-    newObj[formatString(k)] = transformKeys(obj[k]);
+    newObj[k] = transformKeys(obj[k]);
   }
   return newObj;
 }

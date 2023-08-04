@@ -45,6 +45,15 @@ const transformKeys = obj => {
   if (typeof obj !== 'object') {
     return obj;
   }
+
+  if (Array.isArray(obj)) {
+    const arrayObj = [];
+    for (let i = 0; i < obj.length; i++) {
+      arrayObj.push(transformKeys(obj[i]));
+    }
+    return arrayObj
+  }
+
   const newObj = {};
   for (const k in obj) {
     newObj[k] = transformKeys(obj[k]);

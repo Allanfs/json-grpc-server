@@ -73,3 +73,17 @@ message ResponseGreet {
   string message = 1;
 }
 ```
+
+#### Suported data types
+
+The system suports responses of types:
+- string
+- int
+- float
+- boolean
+- object
+- array of objects
+- array of primitives
+
+Todo:
+- []bytes. The idea is add a cli to return do bytes representation of a given content to be added to mock json.

@@ -37,12 +37,39 @@ Get a full fake GRPC API with zero coding in less than 30 seconds 🤡
 
 #### 🤔 what json file looks like ?
 
-- TODO @see `./data/test.json`
+The json file defines all information about the mock server.
 
----
+Inside $.mock object will be defined all method names to a given service.
 
-本软件为公益性质，永久免费使用
+Here we define a mock to `Hello` method and the response object to it. Here the reponse object contains a `message` field with the value `Hello`.
 
-如果你为本软件支付过费用，请立即退款
+```json
+{
+  "port": 3000,
+  "mock": {
+    "Hello": {
+      "message": "Hello"
+    }
+  }
+}
+```
 
-不接受捐款
+The above mock responds to the following proto service definition:
+
+```proto
+syntax="proto3";
+ 
+package greeter;
+ 
+service Greeter {
+  rpc Hello (RequestGreet) returns (ResponseGreet) {}
+}
+ 
+message RequestGreet {
+  string message = 1;
+}
+ 
+message ResponseGreet {
+  string message = 1;
+}
+```
